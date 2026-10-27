@@ -238,6 +238,21 @@ button{font-family:inherit;}
   margin-top:2px;
 }
 
+
+.dict-set{margin-bottom:10px;}
+.dict-set-head{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
+  background:linear-gradient(180deg,var(--board-2),var(--board));
+  border:1px solid var(--rail);border-left:5px solid var(--brass);
+  border-radius:var(--radius-md);padding:12px 16px;cursor:pointer;color:var(--ink);
+  font-family:var(--font-display);font-size:19px;text-align:left;
+}
+.dict-set-head small{display:block;font-family:var(--font-body);font-size:12px;color:var(--ink-dim);margin-top:2px;}
+.dict-set-chev{font-size:18px;color:var(--brass-bright);transition:transform .2s ease;}
+.dict-set-head[aria-expanded="false"] .dict-set-chev{transform:rotate(-90deg);}
+.dict-set-body{padding-top:6px;}
+.mastery-hint{font-size:12.5px;color:var(--ink-dim);margin:4px 2px 0;}
+
 .mastery-note{
   margin:12px 0 4px;
   background:rgba(111,191,115,.1);
@@ -742,6 +757,11 @@ button{font-family:inherit;}
 .sea-prompt-card.shake{animation:shakeSlot .4s ease;}
 .sea-prompt-emoji{font-size:clamp(48px,10vw,72px);margin-bottom:10px;}
 .sea-prompt-word{font-size:clamp(22px,5vw,30px);font-family:var(--font-display-2);}
+.sea-prompt-word.sentence{font-size:clamp(20px,4.6vw,28px);line-height:1.55;}
+.sea-prompt-card .sentence-emoji{font-size:clamp(40px,9vw,60px);}
+.sea-blank{display:inline-block;min-width:2.1em;border-bottom:3px solid var(--sea-ink-dim,#9fd3e8);text-align:center;margin:0 .1em;}
+.sea-blank.filled{border-bottom-color:transparent;font-weight:700;color:#ffe9b8;}
+.sea-blank.wrongfill{color:#ff8969;text-decoration:line-through;}
 
 .sea-choice-col{
   display:flex;
@@ -1154,6 +1174,21 @@ button{font-family:inherit;}
   .be-prompt.shake{animation:none;}
 }
 
+
+/* seating plan + place words */
+.sp{display:flex;flex-direction:column;align-items:center;gap:5px;margin:8px auto 0;max-width:420px;}
+.sp-lab{font-size:11px;letter-spacing:.08em;background:#ffd166;color:#2a1c3a;border-radius:6px;padding:3px 8px;font-weight:700;text-align:center;}
+.sp-mid{display:flex;align-items:center;gap:6px;width:100%;}
+.sp-grid{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px;}
+.sp-row{display:flex;gap:6px;}
+.sp-cell{flex:1;min-width:0;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);border-radius:8px;padding:9px 2px;font-size:14px;text-align:center;font-weight:700;font-family:var(--font-body);color:#fff7ea;}
+.sp-cell.a{background:#ffd166;color:#2a1c3a;border-color:#ffd166;}
+.sp-cell.b{background:#5fd3bc;color:#12332c;border-color:#5fd3bc;}
+.sp-sentence{font-size:clamp(20px,4.6vw,30px);line-height:1.4;}
+.be-phrases{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0 8px;}
+.be-phrases span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:8px 4px;text-align:center;font-size:14px;font-weight:700;}
+.be-opt .be-fixarrow{opacity:.7;margin:0 .35em;}
+
 /* ================= Landscape layouts (A or An game + all Be Verbs screens) ================= */
 .be-col + .be-col .be-section-label{margin-top:18px;}
 
@@ -1178,6 +1213,7 @@ button{font-family:inherit;}
   #aoran-game .sea-choice-btn{font-size:clamp(34px,8.5vh,68px);padding:0;}
   #aoran-game .sea-prompt-emoji{font-size:clamp(64px,17vh,150px);margin-bottom:6px;}
   #aoran-game .sea-prompt-word{font-size:clamp(30px,7.5vh,60px);}
+  #aoran-game .sea-prompt-word.sentence{font-size:clamp(24px,5.6vh,42px);}
   #aoran-game .sea-feedback-line{margin-top:12px;font-size:16px;min-height:28px;}
 
   /* ---------- Be Verbs: shared ---------- */
@@ -1196,6 +1232,7 @@ button{font-family:inherit;}
   /* lessons */
   #be-lesson-pro .be-split,
   #be-lesson-verb .be-split,
+  #be-lesson-place .be-split,
   #be-lesson-not .be-split{grid-template-columns:1fr 1fr;grid-template-areas:"a b" "c c";}
   #be-lesson-pro .be-pro-cell{font-size:clamp(20px,4vh,28px);}
   #be-lesson-verb .be-chart{margin-top:0;}
@@ -1218,9 +1255,14 @@ button{font-family:inherit;}
   #be-play .be-prompt-emoji{font-size:clamp(56px,14vh,120px);}
   #be-play .be-prompt-small{font-size:15px;}
   #be-play .be-prompt-main{font-size:clamp(26px,6.4vh,48px);}
+  #be-play .sp-sentence{font-size:clamp(20px,4.6vh,32px);}
+  #be-play .sp{max-width:min(420px,100%);}
+  #be-play .sp-cell{padding:clamp(4px,1.2vh,9px) 2px;}
   #be-play .be-opts{flex-direction:column;gap:12px;margin-bottom:8px;}
   #be-play .be-opt{flex:none;padding:clamp(12px,2.8vh,24px) 8px;font-size:clamp(24px,5.8vh,42px);}
   #be-play .be-feedback{min-height:56px;font-size:15.5px;}
+  #be-play[data-n="4"] .be-opts{gap:8px;}
+  #be-play[data-n="4"] .be-opt{padding:clamp(6px,1.5vh,12px) 8px;font-size:clamp(18px,3.8vh,30px);}
 
   #be-results{max-width:640px;margin:0 auto;}
 }
@@ -1231,7 +1273,7 @@ button{font-family:inherit;}
     <button class="app-tab active" id="tabLetterboard" data-app="letterboard" type="button">English Dictation</button>
     <button class="app-tab" id="tabAoran" data-app="aoran" type="button">A or An</button>
     <button class="app-tab" id="tabMaths" data-app="maths" type="button">Maths Spelling</button>
-    <button class="app-tab" id="tabBe" data-app="be" type="button">Be Verbs</button>
+    <button class="app-tab" id="tabBe" data-app="be" type="button">Grammar</button>
   </div>
 
   <div id="app-letterboard" class="app-panel">
@@ -1246,33 +1288,73 @@ button{font-family:inherit;}
       <div class="plaque-row">
         <div>
           <div class="plaque-title">ENGLISH DICTATION</div>
-          <div class="plaque-sub">Dictation 2 &middot; 5 Oct 2026 &middot; G1</div>
+          <div class="plaque-sub">Dictation 3 &middot; 2 Nov 2026 &middot; G1</div>
         </div>
       </div>
 
       <p class="menu-lede">Brandon hears each word (spoken, used in a sentence, then repeated), then slots the scrambled letters back into place — just like fixing the letters on a school sign.</p>
 
-      <div class="mastery-note" id="masteryNote">0 / 16 words mastered &mdash; get a word right on the first try twice and it retires from practice.</div>
+      <div class="dict-set" id="set-d3" data-set="d3">
+        <button class="dict-set-head" type="button" data-toggle-set="d3" aria-expanded="true">
+          <span class="dict-set-title">Dictation 3<small>2 Nov 2026</small></span>
+          <span class="dict-set-chev" aria-hidden="true">&#9662;</span>
+        </button>
+        <div class="dict-set-body">
+          <div class="mastery-note" id="masteryNote-d3">0 / 16 words mastered</div>
 
-      <button class="plaque-btn" id="btnPracticeNeedsWork" data-mode="practice">
-        <span class="plaque-num" id="practiceCount">16</span>
-        <span>
-          <div class="plaque-btn-title">Practise Words Needing Work</div>
-          <div class="plaque-btn-sub">Skips words Brandon has already mastered</div>
-        </span>
-      </button>
+          <button class="plaque-btn" data-mode="practice" data-set="d3" type="button">
+            <span class="plaque-num" id="practiceCount-d3">16</span>
+            <span>
+              <div class="plaque-btn-title">Practise Words Needing Work</div>
+              <div class="plaque-btn-sub">Skips words Brandon has already mastered</div>
+            </span>
+          </button>
 
-      <button class="plaque-btn" data-mode="all">
-        <span class="plaque-num">16</span>
-        <span>
-          <div class="plaque-btn-title">Practise All 16</div>
-          <div class="plaque-btn-sub">Full review, including mastered words</div>
-        </span>
-      </button>
+          <button class="plaque-btn" data-mode="all" data-set="d3" type="button">
+            <span class="plaque-num">16</span>
+            <span>
+              <div class="plaque-btn-title">Practise All 16</div>
+              <div class="plaque-btn-sub">Full review, including mastered words</div>
+            </span>
+          </button>
 
-      <div style="margin-top:6px;">
-        <button class="btn small ghost" id="btnResetMastery" type="button">Reset mastery progress</button>
+          <div style="margin-top:6px;">
+            <button class="btn small ghost" data-reset-set="d3" type="button">Reset Dictation 3 progress</button>
+          </div>
+        </div>
       </div>
+
+      <div class="dict-set" id="set-d2" data-set="d2">
+        <button class="dict-set-head" type="button" data-toggle-set="d2" aria-expanded="false">
+          <span class="dict-set-title">Dictation 2<small>5 Oct 2026 &middot; keep for the test</small></span>
+          <span class="dict-set-chev" aria-hidden="true">&#9662;</span>
+        </button>
+        <div class="dict-set-body" hidden>
+          <div class="mastery-note" id="masteryNote-d2">0 / 16 words mastered</div>
+
+          <button class="plaque-btn" data-mode="practice" data-set="d2" type="button">
+            <span class="plaque-num" id="practiceCount-d2">16</span>
+            <span>
+              <div class="plaque-btn-title">Practise Words Needing Work</div>
+              <div class="plaque-btn-sub">Skips words Brandon has already mastered</div>
+            </span>
+          </button>
+
+          <button class="plaque-btn" data-mode="all" data-set="d2" type="button">
+            <span class="plaque-num">16</span>
+            <span>
+              <div class="plaque-btn-title">Practise All 16</div>
+              <div class="plaque-btn-sub">Full review, including mastered words</div>
+            </span>
+          </button>
+
+          <div style="margin-top:6px;">
+            <button class="btn small ghost" data-reset-set="d2" type="button">Reset Dictation 2 progress</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="mastery-hint">Get a word right on the first try twice and it retires from practice.</p>
 
       <label style="display:flex;align-items:center;gap:8px;margin-top:16px;font-size:13px;color:var(--ink-dim);cursor:pointer;">
         <input type="checkbox" id="shuffleOrder" style="accent-color:var(--brass);width:15px;height:15px;" checked>
@@ -1390,6 +1472,14 @@ button{font-family:inherit;}
             <div class="sea-btn-sub" id="trickyLockNote">Finish the Basic Round first to unlock</div>
           </span>
         </button>
+
+        <button class="sea-btn" id="btnAoranSentence" type="button">
+          <span class="sea-btn-emoji">✏️</span>
+          <span>
+            <div class="sea-btn-title">Play: Sentence Round</div>
+            <div class="sea-btn-sub">10 sentences &mdash; read it, then pick a or an</div>
+          </span>
+        </button>
       </section>
 
       <!-- ============ LESSON 1 ============ -->
@@ -1458,7 +1548,8 @@ button{font-family:inherit;}
         <div class="sea-play-row">
           <div class="sea-prompt-card" id="aoranPromptCard">
             <div class="sea-prompt-emoji" id="aoranPromptEmoji">🐘</div>
-            <div class="sea-prompt-word">___ <span id="aoranPromptWord">elephant</span></div>
+            <div class="sea-prompt-word" id="aoranWordLine">___ <span id="aoranPromptWord">elephant</span></div>
+            <div class="sea-prompt-word sentence" id="aoranSentenceLine" hidden></div>
           </div>
 
           <div class="sea-choice-col">
@@ -1608,8 +1699,8 @@ button{font-family:inherit;}
       <section id="be-menu">
         <div class="be-title-row">
           <div>
-            <div class="be-title">BE VERBS &amp; PRONOUNS</div>
-            <div class="be-sub">am &middot; is &middot; are &mdash; who goes with who?</div>
+            <div class="be-title">GRAMMAR HELP</div>
+            <div class="be-sub">be verbs &middot; pronouns &middot; places &middot; proofreading</div>
           </div>
         </div>
         <p class="be-lede">Learn the little words, then practise them. Go in order, or jump to a game.</p>
@@ -1628,6 +1719,11 @@ button{font-family:inherit;}
         <button class="be-btn" data-be-nav="be-lesson-not" type="button">
           <span class="be-btn-ico">🚫</span>
           <span><div class="be-btn-title">Lesson 3: Saying "not"</div><div class="be-btn-sub">am not, is not, are not &mdash; and isn't, aren't</div></span>
+        </button>
+
+        <button class="be-btn" data-be-nav="be-lesson-place" type="button">
+          <span class="be-btn-ico">🪑</span>
+          <span><div class="be-btn-title">Lesson 4: Where is it?</div><div class="be-btn-sub">next to, between, behind, in front of&hellip;</div></span>
         </button>
 
         </div>
@@ -1657,6 +1753,17 @@ button{font-family:inherit;}
         <button class="be-btn" data-be-game="short" type="button">
           <span class="be-btn-ico">✂️</span>
           <span><div class="be-btn-title">Short or Long?</div><div class="be-btn-sub" data-base="I am &rarr; I'm &mdash; pick the short form">I am &rarr; I'm &mdash; pick the short form</div></span>
+        </button>
+        </div>
+        <div class="be-section-label" style="margin-top:14px;">WORKBOOK PRACTICE</div>
+        <div class="be-game-grid">
+        <button class="be-btn" data-be-game="places" type="button">
+          <span class="be-btn-ico">🪑</span>
+          <span><div class="be-btn-title">Seating Plan</div><div class="be-btn-sub" data-base="Who sits where in the classroom?">Who sits where in the classroom?</div></span>
+        </button>
+        <button class="be-btn" data-be-game="proof" type="button">
+          <span class="be-btn-ico">🔍</span>
+          <span><div class="be-btn-title">Proofreading</div><div class="be-btn-sub" data-base="Find the mistake (or none!)">Find the mistake (or none!)</div></span>
         </button>
         </div>
         </div>
@@ -1805,6 +1912,45 @@ button{font-family:inherit;}
         </div>
       </section>
 
+      <!-- ============ LESSON 4: PREPOSITIONS OF PLACE ============ -->
+      <section id="be-lesson-place" hidden>
+        <div class="be-title-row">
+          <button class="be-iconbtn" data-be-nav="be-menu" type="button" aria-label="Back to menu">&larr;</button>
+          <div class="be-title">WHERE IS IT?</div>
+        </div>
+        <p class="be-lede">Words like <b>next to</b> and <b>behind</b> tell us where someone or something is.</p>
+
+        <div class="be-split">
+<div class="be-a">
+        <div class="be-card">
+          <div class="be-card-title">Classroom seating plan</div>
+          <div class="sp"><div class="sp-lab">BACK</div><div class="sp-mid"><div class="sp-lab">LEFT</div><div class="sp-grid"><div class="sp-row"><div class="sp-cell">Justin</div><div class="sp-cell">Mark</div><div class="sp-cell">Max</div></div><div class="sp-row"><div class="sp-cell">Andrew</div><div class="sp-cell">Preston</div><div class="sp-cell">Jayden</div></div><div class="sp-row"><div class="sp-cell">Bobby</div><div class="sp-cell">Isaac</div><div class="sp-cell">Cyrus</div></div></div><div class="sp-lab">RIGHT</div></div><div class="sp-lab">FRONT</div></div>
+        </div>
+</div>
+<div class="be-b">
+        <div class="be-card">
+          <div class="be-card-title">The place words</div>
+          <div class="be-phrases">
+            <span>next to</span><span>between</span><span>at the back</span>
+            <span>in front of</span><span>behind</span><span>beside</span>
+            <span>on the left</span><span>at the front</span><span>on the right</span>
+          </div>
+          <p><b>next to</b> and <b>beside</b> mean the same thing.</p>
+        </div>
+        <div class="be-card">
+          <div class="be-eg"><b>Mark</b> sits at the back, <span class="be-good">between</span> Justin and Max.</div>
+          <div class="be-eg"><b>Bobby</b> sits <span class="be-good">in front of</span> Andrew.</div>
+          <div class="be-eg"><b>Andrew</b> sits <span class="be-good">behind</span> Bobby.</div>
+          <p>Left and right: look at the plan. <b>Left</b> is the left side of the picture.</p>
+        </div>
+</div>
+<div class="be-c">
+        <button class="be-btn primary" data-be-game="places" type="button"><span class="be-btn-ico">🪑</span><span><div class="be-btn-title">Play: Seating Plan</div></span></button>
+        <button class="be-btn" data-be-nav="be-menu" type="button"><span class="be-btn-ico">🏠</span><span><div class="be-btn-title">Back to menu</div></span></button>
+</div>
+        </div>
+      </section>
+
       <!-- ============ SPOTTER (circle / box words) ============ -->
       <section id="be-spot" hidden>
         <div class="be-title-row">
@@ -1903,6 +2049,31 @@ button{font-family:inherit;}
     {word:"barber", tag:"person", sentence:"The barber gave Brandon a haircut shaped exactly like a pineapple."}
   ];
 
+  var DICT3_WORDS = [
+    {word:"dentist", tag:"person", sentence:"Brandon's dentist wore a shark hat and counted his teeth twice."},
+    {word:"afraid", tag:"feeling", sentence:"Brandon was not afraid of the dark until his teddy bear started snoring."},
+    {word:"anything", tag:"word", sentence:"Brandon said he could eat anything, even a pizza topped with jelly beans."},
+    {word:"tightrope", tag:"thing", sentence:"The circus clown walked across the tightrope while juggling three bananas."},
+    {word:"without", tag:"word", sentence:"Brandon never leaves home without his lucky dinosaur socks."},
+    {word:"strong", tag:"describing", sentence:"Brandon felt so strong that he lifted his pillow with one finger."},
+    {word:"wise", tag:"describing", sentence:"The wise old owl gave Brandon a very silly piece of advice."},
+    {word:"brush", tag:"thing", sentence:"Brandon used a giant brush to paint stripes on his pet rock."},
+    {word:"brilliant", tag:"describing", sentence:"Brandon had a brilliant idea to build a rocket out of cardboard boxes."},
+    {word:"fantastic", tag:"describing", sentence:"It was a fantastic day because the school bus turned into a giant slide."},
+    {word:"laugh", tag:"action", sentence:"Brandon's dad made him laugh by wearing a spaghetti hat."},
+    {word:"singer", tag:"person", sentence:"The singer forgot the words and made up a song about frogs."},
+    {word:"always", tag:"word", sentence:"Brandon always checks under his bed for friendly monsters."},
+    {word:"pilot", tag:"person", sentence:"The pilot waved at Brandon and landed the plane on a trampoline."},
+    {word:"cousin", tag:"person", sentence:"Brandon's cousin can wiggle his ears faster than a helicopter."},
+    {word:"policeman", tag:"person", sentence:"The policeman helped a family of ducks cross the road."}
+  ];
+
+  var DICT_SETS = [
+    {id:"d3", title:"Dictation 3", words:DICT3_WORDS},
+    {id:"d2", title:"Dictation 2", words:DEFAULT_WORDS}
+  ];
+  function setById(id){ return DICT_SETS.filter(function(x){return x.id===id;})[0] || DICT_SETS[0]; }
+
   var TAG_ICON = {
     room:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M14 12h.01"/></svg>',
     person:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c1.2-4 4-6 7-6s5.8 2 7 6"/></svg>',
@@ -1911,9 +2082,9 @@ button{font-family:inherit;}
     proper:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M9 9h6v6H9z"/></svg>',
     quality:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.3-9.3-8.7C.9 8.6 3.3 5 6.8 5c2 0 3.6 1.1 5.2 3 1.6-1.9 3.2-3 5.2-3 3.5 0 5.9 3.6 4.1 7.3C19 16.7 12 21 12 21z"/></svg>'
   };
-  var TAG_LABEL = {room:"Place", person:"Person", thing:"Object", subject:"Subject", proper:"Proper noun", quality:"Value"};
+  var TAG_LABEL = {room:"Place", person:"Person", thing:"Object", subject:"Subject", proper:"Proper noun", quality:"Value", feeling:"Feeling", describing:"Describing word", action:"Action", word:"Word"};
 
-  var wordBank = DEFAULT_WORDS.slice();
+  var wordBank = DICT3_WORDS.slice(); // words of the set currently being played
 
   // ---------- mastery tracking (2 first-try-correct answers retires a word) ----------
   var MASTERY_KEY = "letterBoard.dictationMastery.v2";
@@ -1932,8 +2103,12 @@ button{font-family:inherit;}
     masteryData = {};
     try{ localStorage.removeItem(MASTERY_KEY); }catch(e){}
   }
-  function masteredWordCount(){
-    return wordBank.filter(function(w){ return isMastered(w.word); }).length;
+  function masteredWordCount(words){
+    return (words || wordBank).filter(function(w){ return isMastered(w.word); }).length;
+  }
+  function resetMasteryFor(words){
+    words.forEach(function(w){ delete masteryData[w.word]; });
+    try{ localStorage.setItem(MASTERY_KEY, JSON.stringify(masteryData)); }catch(e){}
   }
 
   // ---------- audio ----------
@@ -2115,9 +2290,6 @@ button{font-family:inherit;}
   var screenResults = document.getElementById("screen-results");
 
   var shuffleOrder = document.getElementById("shuffleOrder");
-  var masteryNote = document.getElementById("masteryNote");
-  var practiceCount = document.getElementById("practiceCount");
-  var btnResetMastery = document.getElementById("btnResetMastery");
 
   var statWord = document.getElementById("statWord");
   var statStars = document.getElementById("statStars");
@@ -2141,27 +2313,45 @@ button{font-family:inherit;}
   var btnPlayAgain = document.getElementById("btnPlayAgain");
   var btnChangeSet = document.getElementById("btnChangeSet");
 
-  // ---------- mastery progress display ----------
+  // ---------- mastery progress display (one block per dictation set) ----------
   function refreshMasteryUI(){
-    var mastered = masteredWordCount();
-    var total = wordBank.length;
-    var remaining = total - mastered;
-    masteryNote.textContent = mastered === total
-      ? "All " + total + " words mastered! Great job, Brandon."
-      : mastered + " / " + total + " words mastered — get a word right on the first try twice and it retires from practice.";
-    practiceCount.textContent = remaining;
+    DICT_SETS.forEach(function(set){
+      var total = set.words.length;
+      var mastered = masteredWordCount(set.words);
+      var note = document.getElementById("masteryNote-" + set.id);
+      var cnt = document.getElementById("practiceCount-" + set.id);
+      if(note) note.textContent = mastered === total
+        ? "All " + total + " words mastered! Great job, Brandon."
+        : mastered + " / " + total + " words mastered";
+      if(cnt) cnt.textContent = total - mastered;
+    });
   }
   refreshMasteryUI();
 
-  btnResetMastery.addEventListener("click", function(){
-    resetMastery();
-    refreshMasteryUI();
+  document.querySelectorAll("[data-reset-set]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      resetMasteryFor(setById(btn.getAttribute("data-reset-set")).words);
+      refreshMasteryUI();
+    });
+  });
+
+  // collapse / expand: one set open at a time
+  document.querySelectorAll("[data-toggle-set]").forEach(function(head){
+    head.addEventListener("click", function(){
+      var id = head.getAttribute("data-toggle-set");
+      var willOpen = head.getAttribute("aria-expanded") !== "true";
+      document.querySelectorAll("[data-toggle-set]").forEach(function(h){
+        var open = willOpen && h.getAttribute("data-toggle-set") === id;
+        h.setAttribute("aria-expanded", open ? "true" : "false");
+        h.parentNode.querySelector(".dict-set-body").hidden = !open;
+      });
+    });
   });
 
   // ---------- mode select ----------
-  document.querySelectorAll(".plaque-btn").forEach(function(btn){
+  document.querySelectorAll(".plaque-btn[data-mode]").forEach(function(btn){
     btn.addEventListener("click", function(){
-      startGame(btn.getAttribute("data-mode"));
+      startGame(btn.getAttribute("data-mode"), btn.getAttribute("data-set"));
     });
   });
 
@@ -2174,7 +2364,9 @@ button{font-family:inherit;}
     return a;
   }
 
-  function startGame(mode){
+  function startGame(mode, setId){
+    state.setId = setId || state.setId || "d3";
+    wordBank = setById(state.setId).words;
     var pool = wordBank.filter(function(w){
       if(mode === "all") return true;
       return !isMastered(w.word);
@@ -2185,7 +2377,7 @@ button{font-family:inherit;}
     state.index = 0;
     state.totalStars = 0;
     state.results = [];
-    footerMode.textContent = mode === "all" ? "All 16" : "Words Needing Work";
+    footerMode.textContent = mode === "all" ? "All " + wordBank.length : "Words Needing Work";
     screenMenu.hidden = true;
     screenResults.hidden = true;
     screenGame.hidden = false;
@@ -2415,7 +2607,7 @@ button{font-family:inherit;}
     });
   }
 
-  btnPlayAgain.addEventListener("click", function(){ startGame(state.mode); });
+  btnPlayAgain.addEventListener("click", function(){ startGame(state.mode, state.setId); });
   btnChangeSet.addEventListener("click", function(){
     screenResults.hidden = true;
     screenMenu.hidden = false;
@@ -2496,6 +2688,52 @@ button{font-family:inherit;}
   var aoranBasicCompleted = false;
   try{ aoranBasicCompleted = localStorage.getItem(AORAN_LS_KEY) === "1"; }catch(e){}
 
+
+  // ---------- sentence practice: pre + ___ + next word + post ----------
+  // cat: basic | tricky (sneaky U / silent H) | adj (an adjective sits between the blank and the noun)
+  var AORAN_SENTENCES = [
+    {pre:"I kick", next:"ball", post:"at the park.", article:"a", emoji:"⚽", cat:"basic"},
+    {pre:"Mum put", next:"book", post:"in my bag.", article:"a", emoji:"📖", cat:"basic"},
+    {pre:"My dad drives", next:"car", post:"to work.", article:"a", emoji:"🚗", cat:"basic"},
+    {pre:"Can you see", next:"star", post:"in the sky?", article:"a", emoji:"⭐", cat:"basic"},
+    {pre:"We flew", next:"kite", post:"on the beach.", article:"a", emoji:"🪁", cat:"basic"},
+    {pre:"Look at", next:"fish", post:"in the pond!", article:"a", emoji:"🐟", cat:"basic"},
+    {pre:"The postman saw", next:"dog", post:"in the garden.", article:"a", emoji:"🐶", cat:"basic"},
+    {pre:"She lives in", next:"house", post:"by the sea.", article:"a", emoji:"🏠", cat:"basic"},
+    {pre:"He peeled", next:"banana", post:"for lunch.", article:"a", emoji:"🍌", cat:"basic"},
+    {pre:"I ate", next:"apple", post:"after school.", article:"an", emoji:"🍎", cat:"basic"},
+    {pre:"We saw", next:"elephant", post:"at the zoo.", article:"an", emoji:"🐘", cat:"basic"},
+    {pre:"Mum cracked", next:"egg", post:"into the bowl.", article:"an", emoji:"🥚", cat:"basic"},
+    {pre:"Open", next:"umbrella", post:"because it is raining!", article:"an", emoji:"☂️", cat:"basic"},
+    {pre:"I saw", next:"ant", post:"carry a crumb.", article:"an", emoji:"🐜", cat:"basic"},
+    {pre:"He built", next:"igloo", post:"in the snow.", article:"an", emoji:"❄️", cat:"basic"},
+    {pre:"Dad peeled", next:"orange", post:"for me.", article:"an", emoji:"🍊", cat:"basic"},
+    {pre:"I mashed", next:"avocado", post:"on my toast.", article:"an", emoji:"🥑", cat:"basic"},
+    {pre:"I saw", next:"ostrich", post:"run very fast.", article:"an", emoji:"🐦", cat:"basic"},
+    {pre:"She wore", next:"uniform", post:"to school.", article:"a", emoji:"🎽", cat:"tricky", why:"uniform starts with the sound “yoo”, not a vowel sound"},
+    {pre:"My cousin will go to", next:"university", post:"one day.", article:"a", emoji:"🎓", cat:"tricky", why:"university starts with the sound “yoo”, not a vowel sound"},
+    {pre:"I drew", next:"unicorn", post:"with a rainbow mane.", article:"a", emoji:"🦄", cat:"tricky", why:"unicorn starts with the sound “yoo”, not a vowel sound"},
+    {pre:"I will be back in", next:"hour", post:".", article:"an", emoji:"⏰", cat:"tricky", why:"the h in hour is silent, so it sounds like it starts with “ow”"},
+    {pre:"He is", next:"honest", post:"boy.", article:"an", emoji:"😇", cat:"tricky", why:"the h in honest is silent, so it sounds like it starts with “on”"},
+    {pre:"I saw", next:"old", post:"dog in the park.", article:"an", emoji:"🐕", cat:"adj"},
+    {pre:"We saw", next:"big", post:"elephant at the zoo.", article:"a", emoji:"🐘", cat:"adj"},
+    {pre:"He ate", next:"red", post:"apple.", article:"a", emoji:"🍎", cat:"adj"},
+    {pre:"I have", next:"yellow", post:"umbrella.", article:"a", emoji:"☂️", cat:"adj"},
+    {pre:"She found", next:"empty", post:"box.", article:"an", emoji:"📦", cat:"adj"},
+    {pre:"My cat is", next:"amazing", post:"climber.", article:"an", emoji:"🐱", cat:"adj"},
+    {pre:"Mum made", next:"tasty", post:"egg sandwich.", article:"a", emoji:"🥪", cat:"adj"}
+  ];
+  function pickSentenceDeck(){
+    function pick(cat, n){ return shuffleArray(AORAN_SENTENCES.filter(function(x){return x.cat===cat;})).slice(0, n); }
+    return shuffleArray(pick("basic",5).concat(pick("tricky",2), pick("adj",3)));
+  }
+  function aoranSentenceHTML(w, fill, wrong){
+    var blank = fill
+      ? '<span class="sea-blank filled' + (wrong ? ' wrongfill' : '') + '">' + fill + '</span>'
+      : '<span class="sea-blank">&nbsp;</span>';
+    return w.pre + " " + blank + " " + w.next + (/^[.!?,]/.test(w.post) ? "" : " ") + w.post;
+  }
+
   var aoranState = {mode:null, deck:[], index:0, streak:0, correctCount:0, total:0};
 
   var aoranScreens = ["aoran-menu","aoran-lesson1","aoran-lesson2","aoran-game","aoran-results"];
@@ -2512,6 +2750,9 @@ button{font-family:inherit;}
   var aoranResultsScore = document.getElementById("aoranResultsScore");
   var aoranResultsSub = document.getElementById("aoranResultsSub");
   var btnAoranBasic = document.getElementById("btnAoranBasic");
+  var btnAoranSentence = document.getElementById("btnAoranSentence");
+  var aoranWordLine = document.getElementById("aoranWordLine");
+  var aoranSentenceLine = document.getElementById("aoranSentenceLine");
   var btnAoranTricky = document.getElementById("btnAoranTricky");
   var trickyLockNote = document.getElementById("trickyLockNote");
   var btnAoranBasicFromLesson = document.getElementById("btnAoranBasicFromLesson");
@@ -2572,7 +2813,11 @@ button{font-family:inherit;}
   function loadAoranWord(){
     var w = aoranState.deck[aoranState.index];
     aoranPromptEmoji.textContent = w.emoji;
-    aoranPromptWord.textContent = w.word;
+    var isSentence = !!w.pre;
+    aoranWordLine.hidden = isSentence;
+    aoranSentenceLine.hidden = !isSentence;
+    if(isSentence) aoranSentenceLine.innerHTML = aoranSentenceHTML(w);
+    else aoranPromptWord.textContent = w.word;
     aoranStatItem.textContent = (aoranState.index+1) + "/" + aoranState.total;
     aoranFeedback.textContent = " ";
     aoranFeedback.className = "sea-feedback-line";
@@ -2585,11 +2830,15 @@ button{font-family:inherit;}
 
   function startAoranRound(mode){
     aoranState.mode = mode;
-    var pool = mode === "basic"
-      ? AORAN_WORDS.filter(function(w){return w.category === "basic";})
-      : AORAN_WORDS.slice();
-    var count = mode === "basic" ? 10 : 12;
-    aoranState.deck = shuffleArray(pool).slice(0, count);
+    if(mode === "sentence"){
+      aoranState.deck = pickSentenceDeck();
+    }else{
+      var pool = mode === "basic"
+        ? AORAN_WORDS.filter(function(w){return w.category === "basic";})
+        : AORAN_WORDS.slice();
+      var count = mode === "basic" ? 10 : 12;
+      aoranState.deck = shuffleArray(pool).slice(0, count);
+    }
     aoranState.index = 0;
     aoranState.streak = 0;
     aoranState.correctCount = 0;
@@ -2635,6 +2884,11 @@ button{font-family:inherit;}
       updateAoranStreakDisplay();
       btnEl.classList.add("correct");
       aoranFeedback.textContent = aoranState.streak > 1 ? (aoranState.streak + " in a row!") : "Yes! That's right!";
+      if(w.pre){
+        aoranSentenceLine.innerHTML = aoranSentenceHTML(w, w.article);
+        if(w.cat === "adj") aoranFeedback.textContent = "Yes! “" + w.next + "” is the next word, so ‘" + w.article + "’.";
+        else if(w.why) aoranFeedback.textContent = "Yes! " + w.why.charAt(0).toUpperCase() + w.why.slice(1) + ".";
+      }
       playCorrect();
       celebrationBurst(aoranPromptCard, SEA_COLORS);
       bounceDolphin();
@@ -2644,11 +2898,19 @@ button{font-family:inherit;}
       btnEl.classList.add("wrong");
       var correctBtn = document.querySelector('.sea-choice-btn[data-choice="'+w.article+'"]');
       if(correctBtn) correctBtn.classList.add("correct");
-      aoranFeedback.textContent = "It's “" + w.article + " " + w.word + "” — try the next one!";
+      if(w.pre){
+        aoranSentenceLine.innerHTML = aoranSentenceHTML(w, w.article);
+        aoranFeedback.textContent = w.cat === "adj"
+          ? "Look at the word right after the blank: “" + w.next + "” → " + w.article + " " + w.next + "."
+          : w.why ? "It's “" + w.article + " " + w.next + "” — " + w.why + "."
+                  : "It's “" + w.article + " " + w.next + "” — try the next one!";
+      }else{
+        aoranFeedback.textContent = "It's “" + w.article + " " + w.word + "” — try the next one!";
+      }
       playWrong();
       shakePromptCard();
     }
-    setTimeout(nextAoranWord, 1200);
+    setTimeout(nextAoranWord, w.pre ? (choice === w.article ? 1800 : 3200) : 1200);
   }
 
   document.querySelectorAll(".sea-choice-btn").forEach(function(btn){
@@ -2665,6 +2927,7 @@ button{font-family:inherit;}
   });
 
   btnAoranBasic.addEventListener("click", function(){ startAoranRound("basic"); });
+  btnAoranSentence.addEventListener("click", function(){ startAoranRound("sentence"); });
   btnAoranBasicFromLesson.addEventListener("click", function(){ startAoranRound("basic"); });
   btnAoranTricky.addEventListener("click", function(){
     if(btnAoranTricky.disabled) return;
@@ -3131,7 +3394,7 @@ button{font-family:inherit;}
   function beSaveBest(){ try{ localStorage.setItem(BE_KEY, JSON.stringify(beBest)); }catch(e){} }
 
   var beBoard = document.getElementById("beBoard");
-  var BE_SCREENS = ["be-menu","be-lesson-pro","be-lesson-verb","be-lesson-not","be-spot","be-play","be-results"];
+  var BE_SCREENS = ["be-menu","be-lesson-pro","be-lesson-verb","be-lesson-not","be-lesson-place","be-spot","be-play","be-results"];
   var beTimer = null;
 
   function beEsc(s){
@@ -3317,11 +3580,182 @@ button{font-family:inherit;}
     };
   }
 
+
+  // ---------- Workbook: Seating Plan (prepositions of place) ----------
+  var SEAT_GRID = [["Justin","Mark","Max"],["Andrew","Preston","Jayden"],["Bobby","Isaac","Cyrus"]]; // row 0 = back, col 0 = left
+  function seatPos(name){
+    for(var r=0;r<3;r++) for(var c=0;c<3;c++) if(SEAT_GRID[r][c]===name) return {r:r,c:c};
+  }
+  function seatName(p){ return SEAT_GRID[p[0]][p[1]]; }
+  function seatPlanHtml(hlA, hlB){
+    var rows = "";
+    for(var r=0;r<3;r++){
+      rows += '<div class="sp-row">';
+      for(var c=0;c<3;c++){
+        var nm = SEAT_GRID[r][c];
+        rows += '<div class="sp-cell' + (nm===hlA ? " a" : (nm===hlB ? " b" : "")) + '">' + nm + '</div>';
+      }
+      rows += '</div>';
+    }
+    return '<div class="sp"><div class="sp-lab">BACK</div><div class="sp-mid"><div class="sp-lab">LEFT</div><div class="sp-grid">' + rows +
+           '</div><div class="sp-lab">RIGHT</div></div><div class="sp-lab">FRONT</div></div>';
+  }
+  var SEAT_WHY = {
+    "next to":"Next to means side by side, in the same row.",
+    "in front of":"In front of means nearer the FRONT of the class.",
+    "behind":"Behind means nearer the BACK of the class.",
+    "between":"Between means in the middle of two others."
+  };
+  // all valid question specs, grouped by kind
+  var SEAT_SPECS = (function(){
+    var out = {rel:[], who:[], btw:[], edge:[], corner:[]};
+    var all = [];
+    for(var r=0;r<3;r++) for(var c=0;c<3;c++) all.push({r:r,c:c,n:SEAT_GRID[r][c]});
+    all.forEach(function(a){
+      all.forEach(function(b){
+        if(a===b) return;
+        if(a.r===b.r && Math.abs(a.c-b.c)===1) out.rel.push({a:a.n,b:b.n,ans:"next to"});
+        if(a.c===b.c && a.r===b.r+1) out.rel.push({a:a.n,b:b.n,ans:"in front of"});
+        if(a.c===b.c && a.r===b.r-1) out.rel.push({a:a.n,b:b.n,ans:"behind"});
+      });
+    });
+    for(var rr=0;rr<3;rr++){
+      out.btw.push({a:SEAT_GRID[rr][1], b:SEAT_GRID[rr][0], c:SEAT_GRID[rr][2]});
+    }
+    all.forEach(function(b){
+      if(b.r<=1) out.who.push({rel:"in front of", b:b.n});
+      if(b.r>=1) out.who.push({rel:"behind", b:b.n});
+      if(b.c!==1) out.who.push({rel:"next to", b:b.n});
+    });
+    for(var q=0;q<3;q++) out.who.push({rel:"between", b:SEAT_GRID[q][0], c:SEAT_GRID[q][2]});
+    out.edge = [
+      {a:"Mark", ans:"at the back"}, {a:"Isaac", ans:"at the front"},
+      {a:"Andrew", ans:"on the left"}, {a:"Jayden", ans:"on the right"}
+    ];
+    out.corner = [
+      {a:"Justin", row:"at the back", ans:"left"}, {a:"Max", row:"at the back", ans:"right"},
+      {a:"Bobby", row:"at the front", ans:"left"}, {a:"Cyrus", row:"at the front", ans:"right"}
+    ];
+    return out;
+  })();
+  function seatTrue(name, rel, bName, cName){
+    var p = seatPos(name), b = seatPos(bName);
+    if(rel==="in front of") return p.r===b.r+1 && p.c===b.c;
+    if(rel==="behind") return p.r===b.r-1 && p.c===b.c;
+    if(rel==="next to") return p.r===b.r && Math.abs(p.c-b.c)===1;
+    if(rel==="between"){ var c2 = seatPos(cName); return p.r===b.r && p.c===1 && b.c!==1 && c2.c!==1; }
+    return false;
+  }
+  function pickSeatItems(){
+    function take(list, n){ return shuffleArray(list).slice(0, n); }
+    var items = [].concat(
+      take(SEAT_SPECS.rel,3).map(function(x){return {k:"rel",d:x};}),
+      take(SEAT_SPECS.who,3).map(function(x){return {k:"who",d:x};}),
+      take(SEAT_SPECS.btw,1).map(function(x){return {k:"btw",d:x};}),
+      take(SEAT_SPECS.edge,2).map(function(x){return {k:"edge",d:x};}),
+      take(SEAT_SPECS.corner,1).map(function(x){return {k:"corner",d:x};})
+    );
+    return shuffleArray(items);
+  }
+  function phraseOpts(list){ return shuffleArray(list).map(function(o){ return {value:o}; }); }
+  function sentenceBlock(inner){ return '<div class="sp-sentence">' + inner + '</div>'; }
+  function buildSeatQ(it){
+    var d = it.d, q;
+    if(it.k==="rel"){
+      q = {
+        small:"Look at the seating plan.",
+        main: sentenceBlock(d.a + " sits " + beBlankHtml() + " " + d.b + ".") + seatPlanHtml(d.a, d.b),
+        fill:d.ans, answer:d.ans, options:phraseOpts(["next to","in front of","behind"]),
+        why:SEAT_WHY[d.ans], full:d.a + " sits " + d.ans + " " + d.b + "."
+      };
+    }else if(it.k==="btw"){
+      q = {
+        small:"Look at the seating plan.",
+        main: sentenceBlock(d.a + " sits " + beBlankHtml() + " " + d.b + " and " + d.c + ".") + seatPlanHtml(d.a, null),
+        fill:"between", answer:"between", options:phraseOpts(["between","in front of","behind"]),
+        why:SEAT_WHY.between, full:d.a + " sits between " + d.b + " and " + d.c + "."
+      };
+    }else if(it.k==="edge"){
+      q = {
+        small:"Look at the seating plan.",
+        main: sentenceBlock(d.a + " sits " + beBlankHtml() + " of the classroom.") + seatPlanHtml(d.a, null),
+        fill:d.ans, answer:d.ans, options:phraseOpts(["at the back","at the front","on the left","on the right"]),
+        why:"Find " + d.a + " on the plan and see which side or end of the room " + d.a + " is.",
+        full:d.a + " sits " + d.ans + " of the classroom."
+      };
+    }else if(it.k==="corner"){
+      q = {
+        small:"Left or right? Look at the plan.",
+        main: sentenceBlock(d.a + " sits " + d.row + ", on the " + beBlankHtml() + ".") + seatPlanHtml(d.a, null),
+        fill:d.ans, answer:d.ans, options:phraseOpts(["left","right"]),
+        why:"The LEFT label is on the left side of the plan, and RIGHT is on the right side.",
+        full:d.a + " sits " + d.row + ", on the " + d.ans + "."
+      };
+    }else{ // who
+      var names = [];
+      SEAT_GRID.forEach(function(row){ row.forEach(function(n){ names.push(n); }); });
+      var correct = names.filter(function(n){ return seatTrue(n, d.rel, d.b, d.c); });
+      var ans = correct[0];
+      var wrong = shuffleArray(names.filter(function(n){
+        return n!==d.b && n!==d.c && !seatTrue(n, d.rel, d.b, d.c);
+      })).slice(0,3);
+      var tail = d.rel==="between" ? (d.b + " and " + d.c) : d.b;
+      q = {
+        small:"Who is it? Look at the plan.",
+        main: sentenceBlock(beBlankHtml() + " sits " + d.rel + " " + tail + ".") + seatPlanHtml(d.b, d.c||null),
+        fill:ans, answer:ans, options:phraseOpts(wrong.concat([ans])),
+        why:SEAT_WHY[d.rel], full:ans + " sits " + d.rel + " " + tail + "."
+      };
+    }
+    q.emoji = "🪑";
+    return q;
+  }
+
+  // ---------- Workbook: Proofreading (articles, pronouns, proper nouns) ----------
+  var PROOF_BANK = [
+    {s:"Today is friday and we have music lessons in the morning.", fixed:"Today is Friday and we have music lessons in the morning.", ans:"friday → Friday", wrongs:["is → are","lessons → lesson"], why:"Days of the week are proper nouns, so they start with a capital letter."},
+    {s:"On monday, we have swimming lessons.", fixed:"On Monday, we have swimming lessons.", ans:"monday → Monday", wrongs:["we → We","lessons → lesson"], why:"Days of the week need a capital letter."},
+    {s:"My dad likes football. He plays it on saturday.", fixed:"My dad likes football. He plays it on Saturday.", ans:"saturday → Saturday", wrongs:["He → It","likes → like"], why:"Days of the week need a capital letter."},
+    {s:"We had a lovely day at the beach in august.", fixed:"We had a lovely day at the beach in August.", ans:"august → August", wrongs:["a → an","We → They"], why:"Months are proper nouns, so they start with a capital letter."},
+    {s:"My uncle lives in japan and he loves sushi.", fixed:"My uncle lives in Japan and he loves sushi.", ans:"japan → Japan", wrongs:["he → it","uncle → Uncle"], why:"Countries are proper nouns, so they start with a capital letter."},
+    {s:"My cousin lives in hong kong.", fixed:"My cousin lives in Hong Kong.", ans:"hong kong → Hong Kong", wrongs:["My → my","lives → live"], why:"Cities are proper nouns. Every word of the name starts with a capital letter."},
+    {s:"I have a pet rabbit. They is very soft.", fixed:"I have a pet rabbit. It is very soft.", ans:"They → It", wrongs:["a → an","is → are"], why:"One rabbit is one thing, so we say it. They is for more than one."},
+    {s:"My mum can sing and they is very good at it.", fixed:"My mum can sing and she is very good at it.", ans:"they → she", wrongs:["My → my","sing → sings"], why:"Mum is one woman, so we say she."},
+    {s:"We saw an tall giraffe at the zoo.", fixed:"We saw a tall giraffe at the zoo.", ans:"an → a", wrongs:["saw → see","zoo → Zoo"], why:"Look at the very next word. Tall starts with a consonant sound, so use a."},
+    {s:"Anna has a umbrella because it is raining.", fixed:"Anna has an umbrella because it is raining.", ans:"a → an", wrongs:["Anna → anna","it → they"], why:"Umbrella starts with a vowel sound, so use an."},
+    {s:"It is not an hard game. I like it very much.", fixed:"It is not a hard game. I like it very much.", ans:"an → a", wrongs:["It → They","like → likes"], why:"You can hear the h in hard, so use a."},
+    {s:"I eat an egg and a apple for breakfast.", fixed:"I eat an egg and an apple for breakfast.", ans:"a apple → an apple", wrongs:["an egg → a egg","eat → eats"], why:"Apple starts with a vowel sound, so use an."},
+    {s:"My sister has a bag. She takes it to school.", fixed:null, ans:"ok", wrongs:["a → an","She → He","it → they"], why:"Nothing wrong! A bag, she (one girl), it (one bag)."},
+    {s:"Tom and I are in the same class. We sit next to each other.", fixed:null, ans:"ok", wrongs:["We → They","Tom → tom","I → i"], why:"Nothing wrong! Tom has a capital, and Tom and I together is we."},
+    {s:"He has an old bike. It is very fast.", fixed:null, ans:"ok", wrongs:["an → a","It → He","He → She"], why:"Nothing wrong! Old starts with a vowel sound (an old), and a bike is an it."},
+    {s:"Mrs Chan is my teacher. She is very kind.", fixed:null, ans:"ok", wrongs:["Mrs → mrs","She → They","teacher → Teacher"], why:"Nothing wrong! Names need capitals, and Mrs Chan is one woman, so she."}
+  ];
+  function proofLabel(v){
+    if(v==="ok") return '✓ No mistake';
+    var a = v.split(" → ");
+    return beEsc(a[0]) + '<span class="be-fixarrow">→</span>' + beEsc(a[1]);
+  }
+  function buildProofQ(it){
+    var vals = (it.ans==="ok") ? it.wrongs.concat(["ok"]) : it.wrongs.concat([it.ans, "ok"]);
+    return {
+      emoji:"🔍",
+      small:"Find the mistake. Pick the fix, or say there is no mistake.",
+      main: sentenceBlock(beEsc(it.s)),
+      options: shuffleArray(vals).map(function(v){ return {value:v, html:proofLabel(v)}; }),
+      answer: it.ans,
+      why: it.why,
+      full: it.fixed || it.s,
+      say: it.fixed || it.s
+    };
+  }
+
   var BE_GAMES = {
     swap:  {title:"SWAP THE NAME", bank:BE_SWAP,  build:buildSwapQ,  n:10},
     fill:  {title:"am / is / are", bank:BE_FILL,  build:buildFillQ,  n:10},
     not:   {title:"am not · is not · are not", bank:BE_NOT, build:buildNotQ, n:10},
-    short: {title:"SHORT OR LONG?", bank:BE_SHORT, build:buildShortQ, n:10}
+    short: {title:"SHORT OR LONG?", bank:BE_SHORT, build:buildShortQ, n:10},
+    places:{title:"SEATING PLAN", bank:[], pick:pickSeatItems, build:buildSeatQ, n:10},
+    proof: {title:"PROOFREADING", bank:PROOF_BANK, build:buildProofQ, n:10}
   };
 
   var bePlay = null;
@@ -3337,7 +3771,7 @@ button{font-family:inherit;}
   // ---------- multiple-choice engine ----------
   function startBeMC(id){
     var g = BE_GAMES[id];
-    var items = shuffleArray(g.bank).slice(0, g.n);
+    var items = g.pick ? g.pick() : shuffleArray(g.bank).slice(0, g.n);
     bePlay = {
       id:id, g:g,
       queue: items.map(function(it){ return {item:it, q:g.build(it), retry:false, missed:false}; }),
@@ -3360,6 +3794,7 @@ button{font-family:inherit;}
     document.getElementById("bePromptMain").innerHTML = q.main;
     var optsEl = document.getElementById("beOpts");
     optsEl.innerHTML = "";
+    document.getElementById("be-play").setAttribute("data-n", String(q.options.length));
     q.options.forEach(function(o){
       var b = document.createElement("button");
       b.type = "button";
