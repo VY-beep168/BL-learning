@@ -1185,6 +1185,9 @@ button{font-family:inherit;}
 .sp-cell.a{background:#ffd166;color:#2a1c3a;border-color:#ffd166;}
 .sp-cell.b{background:#5fd3bc;color:#12332c;border-color:#5fd3bc;}
 .sp-sentence{font-size:clamp(20px,4.6vw,30px);line-height:1.4;}
+.word-big{font-size:clamp(40px,10vw,72px);font-family:var(--font-display-3, inherit);line-height:1.2;margin:6px 0;}
+.be-glossary p{margin:4px 0;font-size:13.5px;}
+.be-glossary{margin-top:10px;}
 .be-phrases{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0 8px;}
 .be-phrases span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:8px 4px;text-align:center;font-size:14px;font-weight:700;}
 .be-opt .be-fixarrow{opacity:.7;margin:0 .35em;}
@@ -1233,6 +1236,7 @@ button{font-family:inherit;}
   #be-lesson-pro .be-split,
   #be-lesson-verb .be-split,
   #be-lesson-place .be-split,
+  #be-lesson-names .be-split,
   #be-lesson-not .be-split{grid-template-columns:1fr 1fr;grid-template-areas:"a b" "c c";}
   #be-lesson-pro .be-pro-cell{font-size:clamp(20px,4vh,28px);}
   #be-lesson-verb .be-chart{margin-top:0;}
@@ -1439,7 +1443,7 @@ button{font-family:inherit;}
             <div class="sea-sub">Dolphin's Sound Adventure</div>
           </div>
         </div>
-        <p class="sea-lede">Sometimes we say <b>a</b> dog, sometimes <b>an</b> elephant. Learn the trick, then play the game with the dolphin!</p>
+        <p class="sea-lede">The little words <b>a</b> and <b>an</b> are called <b>ARTICLES</b>. Sometimes we say <b>a</b> dog, sometimes <b>an</b> elephant. Learn the trick, then play the game with the dolphin!</p>
 
         <button class="sea-btn" data-aoran-nav="lesson1" type="button">
           <span class="sea-btn-emoji">📘</span>
@@ -1488,6 +1492,7 @@ button{font-family:inherit;}
           <button class="sea-iconbtn" data-aoran-nav="menu" type="button" aria-label="Back to menu">&larr;</button>
           <div class="sea-title">THE BASIC RULE</div>
         </div>
+        <div class="sea-takeaway" style="margin-bottom:10px;"><b>a</b> and <b>an</b> are called <b>ARTICLES</b>. We put an article before a noun (a name word): <b>a</b> dog, <b>an</b> egg.</div>
         <div class="sea-zones">
           <div class="sea-zone">
             <div class="sea-zone-label">Use "A"</div>
@@ -1710,7 +1715,7 @@ button{font-family:inherit;}
         <div class="be-section-label">LEARN</div>
         <button class="be-btn" data-be-nav="be-lesson-pro" type="button">
           <span class="be-btn-ico">👆</span>
-          <span><div class="be-btn-title">Lesson 1: Pronouns</div><div class="be-btn-sub">I, you, he, she, it, we, they</div></span>
+          <span><div class="be-btn-title">Lesson 1: Pronouns</div><div class="be-btn-sub">Personal subject pronouns: I, you, he, she, it&hellip;</div></span>
         </button>
         <button class="be-btn" data-be-nav="be-lesson-verb" type="button">
           <span class="be-btn-ico">🔗</span>
@@ -1721,10 +1726,20 @@ button{font-family:inherit;}
           <span><div class="be-btn-title">Lesson 3: Saying "not"</div><div class="be-btn-sub">am not, is not, are not &mdash; and isn't, aren't</div></span>
         </button>
 
+        <button class="be-btn" data-be-nav="be-lesson-names" type="button">
+          <span class="be-btn-ico">🔠</span>
+          <span><div class="be-btn-title">Lesson 4: Names, capitals &amp; full stops</div><div class="be-btn-sub">proper nouns, capital letters, full stops</div></span>
+        </button>
         <button class="be-btn" data-be-nav="be-lesson-place" type="button">
           <span class="be-btn-ico">🪑</span>
-          <span><div class="be-btn-title">Lesson 4: Where is it?</div><div class="be-btn-sub">next to, between, behind, in front of&hellip;</div></span>
+          <span><div class="be-btn-title">Lesson 5: Where is it?</div><div class="be-btn-sub">next to, between, behind, in front of&hellip;</div></span>
         </button>
+        <div class="be-card be-glossary">
+          <div class="be-card-title">Big words to know</div>
+          <p><b>article</b> = <b>a</b>, <b>an</b></p>
+          <p><b>personal subject pronoun</b> = I, you, he, she, it, we, they</p>
+          <p><b>proper noun</b> = a special name (Brandon, Friday, Hong Kong)</p>
+        </div>
 
         </div>
         <div class="be-col">
@@ -1755,15 +1770,26 @@ button{font-family:inherit;}
           <span><div class="be-btn-title">Short or Long?</div><div class="be-btn-sub" data-base="I am &rarr; I'm &mdash; pick the short form">I am &rarr; I'm &mdash; pick the short form</div></span>
         </button>
         </div>
+        <div class="be-section-label" style="margin-top:14px;">PROGRESS CHECK PRACTICE &middot; FRI 6 NOV</div>
+        <div class="be-game-grid">
+        <button class="be-btn" data-be-game="words" type="button">
+          <span class="be-btn-ico">🏷️</span>
+          <span><div class="be-btn-title">What is this word called?</div><div class="be-btn-sub" data-base="article, pronoun or proper noun?">article, pronoun or proper noun?</div></span>
+        </button>
+        <button class="be-btn" data-be-game="caps" type="button">
+          <span class="be-btn-ico">🔠</span>
+          <span><div class="be-btn-title">Capitals &amp; Full Stops</div><div class="be-btn-sub" data-base="Fix the capital letter or full stop">Fix the capital letter or full stop</div></span>
+        </button>
+        <button class="be-btn" data-be-game="proof" type="button">
+          <span class="be-btn-ico">🔍</span>
+          <span><div class="be-btn-title">Proofreading</div><div class="be-btn-sub" data-base="Find the mistake (or none!)">Find the mistake (or none!)</div></span>
+        </button>
+        </div>
         <div class="be-section-label" style="margin-top:14px;">WORKBOOK PRACTICE</div>
         <div class="be-game-grid">
         <button class="be-btn" data-be-game="places" type="button">
           <span class="be-btn-ico">🪑</span>
           <span><div class="be-btn-title">Seating Plan</div><div class="be-btn-sub" data-base="Who sits where in the classroom?">Who sits where in the classroom?</div></span>
-        </button>
-        <button class="be-btn" data-be-game="proof" type="button">
-          <span class="be-btn-ico">🔍</span>
-          <span><div class="be-btn-title">Proofreading</div><div class="be-btn-sub" data-base="Find the mistake (or none!)">Find the mistake (or none!)</div></span>
         </button>
         </div>
         </div>
@@ -1774,13 +1800,14 @@ button{font-family:inherit;}
       <section id="be-lesson-pro" hidden>
         <div class="be-title-row">
           <button class="be-iconbtn" data-be-nav="be-menu" type="button" aria-label="Back to menu">&larr;</button>
-          <div class="be-title">PRONOUNS</div>
+          <div class="be-title">PERSONAL SUBJECT PRONOUNS</div>
         </div>
         <div class="be-split">
 <div class="be-a">
         <div class="be-card">
           <div class="be-card-title">What is a pronoun?</div>
           <p>A pronoun is a small word that takes the place of a name, so we don't say the same name again and again.</p>
+          <p>These seven are called <b>personal subject pronouns</b>: <b>I, you, he, she, it, we, they</b>.</p>
           <div class="be-eg">Tom is eight. <span class="be-hi">He</span> is my brother.</div>
           <div class="be-eg">Mum and Dad are kind. <span class="be-hi">They</span> are at home.</div>
         </div>
@@ -1912,7 +1939,51 @@ button{font-family:inherit;}
         </div>
       </section>
 
-      <!-- ============ LESSON 4: PREPOSITIONS OF PLACE ============ -->
+      <!-- ============ LESSON 4: NAMES, CAPITALS, FULL STOPS ============ -->
+      <section id="be-lesson-names" hidden>
+        <div class="be-title-row">
+          <button class="be-iconbtn" data-be-nav="be-menu" type="button" aria-label="Back to menu">&larr;</button>
+          <div class="be-title">NAMES, CAPITALS &amp; FULL STOPS</div>
+        </div>
+        <div class="be-split">
+<div class="be-a">
+        <div class="be-card">
+          <div class="be-card-title">Proper nouns</div>
+          <p>A <b>proper noun</b> is the special name of one person, place, day or month. It always starts with a <b>CAPITAL letter</b>.</p>
+          <div class="be-eg"><span class="be-good">Brandon</span> &middot; <span class="be-good">Hong Kong</span> &middot; <span class="be-good">Japan</span></div>
+          <div class="be-eg"><span class="be-good">Friday</span> &middot; <span class="be-good">August</span> &middot; <span class="be-good">Mrs Chan</span></div>
+        </div>
+        <div class="be-card">
+          <div class="be-card-title">Common nouns</div>
+          <p>A <b>common noun</b> is an ordinary name, not a special one. No capital letter!</p>
+          <div class="be-eg">boy &middot; city &middot; country &middot; day &middot; month &middot; teacher</div>
+          <div class="be-eg"><span class="be-bad">Teacher</span> &nbsp; <span class="be-good">teacher</span> &nbsp;&middot;&nbsp; <span class="be-good">Mr Lee</span></div>
+        </div>
+</div>
+<div class="be-b">
+        <div class="be-card">
+          <div class="be-card-title">Capital letters</div>
+          <p>1. The <b>first word</b> of every sentence.</p>
+          <p>2. The word <b>I</b> &mdash; always!</p>
+          <p>3. <b>Proper nouns</b>: names, places, days, months.</p>
+          <div class="be-eg"><span class="be-bad">my friend tom and i live in hong kong.</span></div>
+          <div class="be-eg"><span class="be-good">My friend Tom and I live in Hong Kong.</span></div>
+        </div>
+        <div class="be-card">
+          <div class="be-card-title">Full stops</div>
+          <p>A sentence that tells us something ends with a <b>full stop ( . )</b>.</p>
+          <div class="be-eg"><span class="be-bad">Today is Friday</span> &nbsp; <span class="be-good">Today is Friday.</span></div>
+        </div>
+</div>
+<div class="be-c">
+        <button class="be-btn primary" data-be-game="caps" type="button"><span class="be-btn-ico">🔠</span><span><div class="be-btn-title">Play: Capitals &amp; Full Stops</div></span></button>
+        <button class="be-btn" data-be-game="words" type="button"><span class="be-btn-ico">🏷️</span><span><div class="be-btn-title">Play: What is this word called?</div></span></button>
+        <button class="be-btn" data-be-nav="be-menu" type="button"><span class="be-btn-ico">🏠</span><span><div class="be-btn-title">Back to menu</div></span></button>
+</div>
+        </div>
+      </section>
+
+      <!-- ============ LESSON 5: PREPOSITIONS OF PLACE ============ -->
       <section id="be-lesson-place" hidden>
         <div class="be-title-row">
           <button class="be-iconbtn" data-be-nav="be-menu" type="button" aria-label="Back to menu">&larr;</button>
@@ -3394,7 +3465,7 @@ button{font-family:inherit;}
   function beSaveBest(){ try{ localStorage.setItem(BE_KEY, JSON.stringify(beBest)); }catch(e){} }
 
   var beBoard = document.getElementById("beBoard");
-  var BE_SCREENS = ["be-menu","be-lesson-pro","be-lesson-verb","be-lesson-not","be-lesson-place","be-spot","be-play","be-results"];
+  var BE_SCREENS = ["be-menu","be-lesson-pro","be-lesson-verb","be-lesson-not","be-lesson-names","be-lesson-place","be-spot","be-play","be-results"];
   var beTimer = null;
 
   function beEsc(s){
@@ -3730,8 +3801,64 @@ button{font-family:inherit;}
     {s:"He has an old bike. It is very fast.", fixed:null, ans:"ok", wrongs:["an → a","It → He","He → She"], why:"Nothing wrong! Old starts with a vowel sound (an old), and a bike is an it."},
     {s:"Mrs Chan is my teacher. She is very kind.", fixed:null, ans:"ok", wrongs:["Mrs → mrs","She → They","teacher → Teacher"], why:"Nothing wrong! Names need capitals, and Mrs Chan is one woman, so she."}
   ];
+
+  // ---------- Progress Check: "What is this word called?" ----------
+  var WORD_TYPES = ["article","personal pronoun","proper noun","common noun"];
+  var WORD_BANK = [
+    {w:"a", t:"article"}, {w:"an", t:"article"},
+    {w:"I", t:"personal pronoun"}, {w:"you", t:"personal pronoun"}, {w:"he", t:"personal pronoun"}, {w:"she", t:"personal pronoun"},
+    {w:"it", t:"personal pronoun"}, {w:"we", t:"personal pronoun"}, {w:"they", t:"personal pronoun"},
+    {w:"Brandon", t:"proper noun"}, {w:"Friday", t:"proper noun"}, {w:"August", t:"proper noun"}, {w:"Hong Kong", t:"proper noun"},
+    {w:"Japan", t:"proper noun"}, {w:"Mrs Chan", t:"proper noun"}, {w:"Monday", t:"proper noun"}, {w:"Tom", t:"proper noun"},
+    {w:"dog", t:"common noun"}, {w:"school", t:"common noun"}, {w:"teacher", t:"common noun"}, {w:"city", t:"common noun"},
+    {w:"boy", t:"common noun"}, {w:"day", t:"common noun"}, {w:"country", t:"common noun"}, {w:"month", t:"common noun"}
+  ];
+  var WORD_WHY = {
+    "article":"The little words a and an are called articles. They go before a noun: a dog, an egg.",
+    "personal pronoun":"A personal subject pronoun takes the place of a name: Tom → he, Mum → she.",
+    "proper noun":"A proper noun is a special name, so it starts with a capital letter.",
+    "common noun":"A common noun is an ordinary name (not a special one), so no capital letter."
+  };
+  function pickWordItems(){
+    function take(t,n){ return shuffleArray(WORD_BANK.filter(function(x){return x.t===t;})).slice(0,n); }
+    return shuffleArray(take("article",2).concat(take("personal pronoun",3), take("proper noun",3), take("common noun",2)));
+  }
+  function buildWordQ(it){
+    return {
+      emoji:"🏷️",
+      small:"What is this word called?",
+      main:'<div class="word-big">' + beEsc(it.w) + '</div>',
+      options: shuffleArray(WORD_TYPES).map(function(o){ return {value:o}; }),
+      answer: it.t,
+      why: WORD_WHY[it.t],
+      full: '“' + it.w + '” is ' + (it.t==="article" ? "an" : "a") + ' ' + it.t + '.',
+      say: it.w + " is " + (it.t==="article" ? "an " : "a ") + it.t
+    };
+  }
+
+  // ---------- Progress Check: capitals & full stops ----------
+  var PUNCT_BANK = [
+    {s:"we have music on Friday.", fixed:"We have music on Friday.", ans:"we → We", wrongs:["music → Music","Friday → friday"], why:"Every sentence starts with a capital letter."},
+    {s:"my brother is eight years old.", fixed:"My brother is eight years old.", ans:"my → My", wrongs:["brother → Brother","eight → Eight"], why:"Every sentence starts with a capital letter."},
+    {s:"Today is Friday", fixed:"Today is Friday.", ans:"add a full stop", wrongs:["Today → today","is → Is"], why:"A sentence that tells us something ends with a full stop ( . )."},
+    {s:"I eat lunch at school at noon", fixed:"I eat lunch at school at noon.", ans:"add a full stop", wrongs:["eat → Eat","lunch → Lunch"], why:"A sentence that tells us something ends with a full stop ( . )."},
+    {s:"On Sunday we go to the park", fixed:"On Sunday we go to the park.", ans:"add a full stop", wrongs:["we → We","park → Park"], why:"A sentence that tells us something ends with a full stop ( . )."},
+    {s:"She is my cousin and her name is Mei", fixed:"She is my cousin and her name is Mei.", ans:"add a full stop", wrongs:["cousin → Cousin","Mei → mei"], why:"A sentence that tells us something ends with a full stop ( . )."},
+    {s:"My friend is called tom.", fixed:"My friend is called Tom.", ans:"tom → Tom", wrongs:["friend → Friend","called → Called"], why:"The name of a person is a proper noun, so it needs a capital letter."},
+    {s:"I love swimming in july.", fixed:"I love swimming in July.", ans:"july → July", wrongs:["swimming → Swimming","love → Love"], why:"Months are proper nouns, so they need a capital letter."},
+    {s:"We visit china every summer.", fixed:"We visit China every summer.", ans:"china → China", wrongs:["summer → Summer","visit → Visit"], why:"Countries are proper nouns, so they need a capital letter. (Summer is not a special name, so no capital.)"},
+    {s:"Anna and i went to the park.", fixed:"Anna and I went to the park.", ans:"i → I", wrongs:["Anna → anna","park → Park"], why:"The word I is always a capital letter."},
+    {s:"The boy likes his Teacher.", fixed:"The boy likes his teacher.", ans:"Teacher → teacher", wrongs:["boy → Boy","likes → Likes"], why:"Teacher is a common noun, not a special name, so no capital letter. (Mr Lee would need one.)"},
+    {s:"We went to the City on Saturday.", fixed:"We went to the city on Saturday.", ans:"City → city", wrongs:["Saturday → saturday","went → Went"], why:"City is a common noun, so no capital letter. Saturday is a special day name, so it needs one."},
+    {s:"Anna and I go to school on Monday.", fixed:null, ans:"ok", wrongs:["Anna → anna","I → i","Monday → monday"], why:"All correct! Capital letters for Anna, I, Monday and the first word, and a full stop at the end."},
+    {s:"We saw a tiger in Africa.", fixed:null, ans:"ok", wrongs:["Africa → africa","tiger → Tiger","We → we"], why:"All correct! Africa is a place name, tiger is a common noun, and the sentence ends with a full stop."},
+    {s:"Today is a sunny day.", fixed:null, ans:"ok", wrongs:["Today → today","sunny → Sunny","day → Day"], why:"All correct! One capital at the start, a full stop at the end."},
+    {s:"He lives in Japan.", fixed:null, ans:"ok", wrongs:["Japan → japan","He → he","lives → Lives"], why:"All correct! Japan is a country name, so it needs a capital letter."}
+  ];
+
   function proofLabel(v){
     if(v==="ok") return '✓ No mistake';
+    if(v.indexOf(" → ") === -1) return beEsc(v) + ' ( . )';
     var a = v.split(" → ");
     return beEsc(a[0]) + '<span class="be-fixarrow">→</span>' + beEsc(a[1]);
   }
@@ -3755,7 +3882,9 @@ button{font-family:inherit;}
     not:   {title:"am not · is not · are not", bank:BE_NOT, build:buildNotQ, n:10},
     short: {title:"SHORT OR LONG?", bank:BE_SHORT, build:buildShortQ, n:10},
     places:{title:"SEATING PLAN", bank:[], pick:pickSeatItems, build:buildSeatQ, n:10},
-    proof: {title:"PROOFREADING", bank:PROOF_BANK, build:buildProofQ, n:10}
+    proof: {title:"PROOFREADING", bank:PROOF_BANK, build:buildProofQ, n:10},
+    caps:  {title:"CAPITALS & FULL STOPS", bank:PUNCT_BANK, build:buildProofQ, n:10},
+    words: {title:"WHAT IS THIS WORD CALLED?", bank:[], pick:pickWordItems, build:buildWordQ, n:10}
   };
 
   var bePlay = null;
