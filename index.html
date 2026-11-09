@@ -1185,6 +1185,12 @@ button{font-family:inherit;}
 .sp-cell.a{background:#ffd166;color:#2a1c3a;border-color:#ffd166;}
 .sp-cell.b{background:#5fd3bc;color:#12332c;border-color:#5fd3bc;}
 .sp-sentence{font-size:clamp(20px,4.6vw,30px);line-height:1.4;}
+.be-poss{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.be-poss-cell{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:10px 12px;font-size:clamp(18px,4.5vw,24px);}
+.be-poss-cell:last-child{grid-column:1 / -1;}
+.be-poss-cell b{color:#ffd166;}
+.be-poss-arrow{opacity:.6;}
+.be-poss-cell small{margin-left:auto;font-size:1.1em;}
 .be-phrases{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0 8px;}
 .be-phrases span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:8px 4px;text-align:center;font-size:14px;font-weight:700;}
 .be-opt .be-fixarrow{opacity:.7;margin:0 .35em;}
@@ -1233,6 +1239,7 @@ button{font-family:inherit;}
   #be-lesson-pro .be-split,
   #be-lesson-verb .be-split,
   #be-lesson-place .be-split,
+  #be-lesson-poss .be-split,
   #be-lesson-names .be-split,
   #be-lesson-not .be-split{grid-template-columns:1fr 1fr;grid-template-areas:"a b" "c c";}
   #be-lesson-pro .be-pro-cell{font-size:clamp(20px,4vh,28px);}
@@ -1731,6 +1738,10 @@ button{font-family:inherit;}
           <span class="be-btn-ico">🪑</span>
           <span><div class="be-btn-title">Lesson 5: Where is it?</div><div class="be-btn-sub">next to, between, behind, in front of&hellip;</div></span>
         </button>
+        <button class="be-btn" data-be-nav="be-lesson-poss" type="button">
+          <span class="be-btn-ico">🎒</span>
+          <span><div class="be-btn-title">Lesson 6: Possessive Adjectives</div><div class="be-btn-sub">my, your, his, her, its, our, their</div></span>
+        </button>
 
         </div>
         <div class="be-col">
@@ -1777,6 +1788,10 @@ button{font-family:inherit;}
         <button class="be-btn" data-be-game="places" type="button">
           <span class="be-btn-ico">🪑</span>
           <span><div class="be-btn-title">Seating Plan</div><div class="be-btn-sub" data-base="Who sits where in the classroom?">Who sits where in the classroom?</div></span>
+        </button>
+        <button class="be-btn" data-be-game="poss" type="button">
+          <span class="be-btn-ico">🎒</span>
+          <span><div class="be-btn-title">Whose is it?</div><div class="be-btn-sub" data-base="my, your, his, her, its, our, their">my, your, his, her, its, our, their</div></span>
         </button>
         </div>
         </div>
@@ -1964,6 +1979,40 @@ button{font-family:inherit;}
 </div>
 <div class="be-c">
         <button class="be-btn primary" data-be-game="caps" type="button"><span class="be-btn-ico">🔠</span><span><div class="be-btn-title">Play: Capitals &amp; Full Stops</div></span></button>
+        <button class="be-btn" data-be-nav="be-menu" type="button"><span class="be-btn-ico">🏠</span><span><div class="be-btn-title">Back to menu</div></span></button>
+</div>
+        </div>
+      </section>
+
+      <!-- ============ LESSON 6: POSSESSIVE ADJECTIVES ============ -->
+      <section id="be-lesson-poss" hidden>
+        <div class="be-title-row">
+          <button class="be-iconbtn" data-be-nav="be-menu" type="button" aria-label="Back to menu">&larr;</button>
+          <div class="be-title">POSSESSIVE ADJECTIVES</div>
+        </div>
+        <div class="be-split">
+<div class="be-a">
+        <div class="be-card">
+          <div class="be-card-title">Whose is it?</div>
+          <p>A <b>possessive adjective</b> tells us who something <b>belongs to</b>. It goes <b>before a noun</b> (a name word).</p>
+          <div class="be-eg">Tim is going to class. <span class="be-hi">His</span> book is in the classroom.</div>
+          <div class="be-eg">Mum is happy. <span class="be-hi">Her</span> cake is ready.</div>
+          <div class="be-eg">We love <span class="be-hi">our</span> school.</div>
+        </div>
+</div>
+<div class="be-b">
+        <div class="be-poss" aria-label="Possessive adjectives">
+          <div class="be-poss-cell"><span class="be-poss-from">I</span><span class="be-poss-arrow">&rarr;</span><b>my</b><small>🙋</small></div><div class="be-poss-cell"><span class="be-poss-from">you</span><span class="be-poss-arrow">&rarr;</span><b>your</b><small>👉</small></div><div class="be-poss-cell"><span class="be-poss-from">he</span><span class="be-poss-arrow">&rarr;</span><b>his</b><small>👦</small></div><div class="be-poss-cell"><span class="be-poss-from">she</span><span class="be-poss-arrow">&rarr;</span><b>her</b><small>👧</small></div><div class="be-poss-cell"><span class="be-poss-from">it</span><span class="be-poss-arrow">&rarr;</span><b>its</b><small>🌳</small></div><div class="be-poss-cell"><span class="be-poss-from">we</span><span class="be-poss-arrow">&rarr;</span><b>our</b><small>👭</small></div><div class="be-poss-cell"><span class="be-poss-from">they</span><span class="be-poss-arrow">&rarr;</span><b>their</b><small>👪</small></div>
+        </div>
+</div>
+<div class="be-c">
+        <div class="be-card">
+          <p><b>his</b> = belongs to a boy or man &nbsp;&middot;&nbsp; <b>her</b> = belongs to a girl or woman</p>
+          <p><b>its</b> = belongs to an animal or a thing &mdash; <b>no apostrophe!</b></p>
+          <p><b>their</b> = belongs to more than one person, animal or thing</p>
+          <div class="be-eg">The tree is tall. <span class="be-good">Its</span> leaves are green.</div>
+        </div>
+        <button class="be-btn primary" data-be-game="poss" type="button"><span class="be-btn-ico">🎒</span><span><div class="be-btn-title">Play: Whose is it?</div></span></button>
         <button class="be-btn" data-be-nav="be-menu" type="button"><span class="be-btn-ico">🏠</span><span><div class="be-btn-title">Back to menu</div></span></button>
 </div>
         </div>
@@ -3451,7 +3500,7 @@ button{font-family:inherit;}
   function beSaveBest(){ try{ localStorage.setItem(BE_KEY, JSON.stringify(beBest)); }catch(e){} }
 
   var beBoard = document.getElementById("beBoard");
-  var BE_SCREENS = ["be-menu","be-lesson-pro","be-lesson-verb","be-lesson-not","be-lesson-names","be-lesson-place","be-spot","be-play","be-results"];
+  var BE_SCREENS = ["be-menu","be-lesson-pro","be-lesson-verb","be-lesson-not","be-lesson-names","be-lesson-place","be-lesson-poss","be-spot","be-play","be-results"];
   var beTimer = null;
 
   function beEsc(s){
@@ -3828,12 +3877,48 @@ button{font-family:inherit;}
     };
   }
 
+
+  // ---------- Lesson 6 game: possessive adjectives ----------
+  var POSS_ALL = ["My","Your","His","Her","Its","Our","Their"];
+  var POSS_BANK = [
+    {a:"I am eight.", b:"birthday is in May.", ans:"My", why:"I am the owner, so my."},
+    {a:"I have a new bike.", b:"bike is red.", ans:"My", why:"I am the owner, so my."},
+    {a:"You are in Class 1A.", b:"teacher is Mrs Chan.", ans:"Your", why:"You are the owner, so your."},
+    {a:"You have a pencil.", b:"pencil is yellow.", ans:"Your", why:"You are the owner, so your."},
+    {a:"Tim is going to class.", b:"book is in the classroom.", ans:"His", why:"Tim is a boy, so his."},
+    {a:"Dad is at work.", b:"car is in the garage.", ans:"His", why:"Dad is a man, so his."},
+    {a:"Anna is at the park.", b:"kite is red.", ans:"Her", why:"Anna is a girl, so her."},
+    {a:"Mum is in the kitchen.", b:"cake is ready.", ans:"Her", why:"Mum is a woman, so her."},
+    {a:"The girl is sad.", b:"toy is broken.", ans:"Her", why:"The girl is a she, so her."},
+    {a:"The tree is tall.", b:"leaves are green.", ans:"Its", why:"A tree is a thing, so its (no apostrophe)."},
+    {a:"The school is big.", b:"playground is new.", ans:"Its", why:"A school is a thing, so its (no apostrophe)."},
+    {a:"We are in Class 1A.", b:"teacher is Mrs Chan.", ans:"Our", why:"We are the owners, so our."},
+    {a:"Tom and I love football.", b:"ball is old.", ans:"Our", why:"Tom and I = we, so our."},
+    {a:"The boys are at school.", b:"bags are on the floor.", ans:"Their", why:"The boys = they, so their."},
+    {a:"Mum and Dad are at home.", b:"car is outside.", ans:"Their", why:"Mum and Dad = they, so their."},
+    {a:"Anna and Tom are in the garden.", b:"dog is brown.", ans:"Their", why:"Anna and Tom = they, so their."}
+  ];
+  function buildPossQ(it){
+    var wrong = shuffleArray(POSS_ALL.filter(function(o){ return o !== it.ans; })).slice(0,3);
+    return {
+      emoji:"🎒",
+      small:"Who does it belong to? Pick the right word.",
+      main: sentenceBlock(beEsc(it.a) + " " + beBlankHtml() + " " + beEsc(it.b)),
+      fill: it.ans,
+      options: shuffleArray(wrong.concat([it.ans])).map(function(o){ return {value:o}; }),
+      answer: it.ans,
+      why: it.why,
+      full: it.a + " " + it.ans + " " + it.b
+    };
+  }
+
   var BE_GAMES = {
     swap:  {title:"SWAP THE NAME", bank:BE_SWAP,  build:buildSwapQ,  n:10},
     fill:  {title:"am / is / are", bank:BE_FILL,  build:buildFillQ,  n:10},
     not:   {title:"am not · is not · are not", bank:BE_NOT, build:buildNotQ, n:10},
     short: {title:"SHORT OR LONG?", bank:BE_SHORT, build:buildShortQ, n:10},
     places:{title:"SEATING PLAN", bank:[], pick:pickSeatItems, build:buildSeatQ, n:10},
+    poss:  {title:"WHOSE IS IT?", bank:POSS_BANK, build:buildPossQ, n:10},
     proof: {title:"PROOFREADING", bank:PROOF_BANK, build:buildProofQ, n:10},
     caps:  {title:"CAPITALS & FULL STOPS", bank:PUNCT_BANK, build:buildProofQ, n:10}
   };
